@@ -7,6 +7,15 @@
 デリゲートが介入しているため、外部から勝手に発火できない。
 通知専用であり、外部からの上書き呼び出しが出来ない。
 
+⚠イベント「発火」と「発生」の違い
+◯発火
+イベントを"実際に呼び出して"購読者へ通知を送ること。
+つまりここで呼び出しを行う"Invoke"を使う必要がある。
+◯発生
+イベントを発火させる仕組み(トリガー)を作る。
+Invokeの前提となる条件判定や準備を行う。
+今回のコードには発生はない。
+
 namespace LearningAnything
 {
     // シグネチャ(戻り値と引数)を指定するデリゲート
@@ -21,7 +30,7 @@ namespace LearningAnything
         public event Notify OnNotify;
         public void RaiseEvent(string message)
         {
-            // 購読者がいるとき、そのメソッドを呼ぶ(Invoke)。
+            // 購読者がいるとき、そのメソッドを呼ぶ(Invoke)。これが発火！
             // Invokeはデリゲート完全依存。デリゲートに登録されたメソッドをすべて実行。
             OnNotify?.Invoke(message);
         }
