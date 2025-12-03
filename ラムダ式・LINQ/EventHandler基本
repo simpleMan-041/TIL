@@ -1,7 +1,11 @@
+EventHandlerはsender + EventArgsを受け取る標準デリゲート。
+一言で言うならば、イベント通知専用の定型デリゲートである。
+Publisher → 通知専用デリゲート → Subscriber
+上の流れを理解したうえで話を進めると分かりやすくなる。
+
 public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e)
     where TEventArgs : EventArgs;
 
-EventHandlerはsender + EventArgsを受け取る標準デリゲート。
 object senderにはイベントを発火したオブジェクト参照が入る。
 EventArgs eにはイベントに関する追加情報(一般的にプロパティを持つだけのクラス)が入る。
 
@@ -17,3 +21,4 @@ public class EventArgs
 つまり、、、
 EventArgsは「イベント用の引数クラス」であることを明示するマーカー。
 イベント引数に対して型制約を行う→(!TEventArgsはEventArgsを継承しなければならない!)
+
