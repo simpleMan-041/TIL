@@ -1,0 +1,19 @@
+public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e)
+    where TEventArgs : EventArgs;
+
+EventHandlerはsender + EventArgsを受け取る標準デリゲート。
+object senderにはイベントを発火したオブジェクト参照が入る。
+EventArgs eにはイベントに関する追加情報(一般的にプロパティを持つだけのクラス)が入る。
+
+しれっとEventArgsが継承されている。
+以下基底クラス。プロパティもロジックもほぼない。
+中身のない共通インスタンスがある。
+public class EventArgs
+{
+    //　中身のない共通インスタンスだけ持つ。
+    public static readonly EventArgs Empty = new EventArgs();
+    public EventArgs() { }
+}
+つまり、、、
+EventArgsは「イベント用の引数クラス」であることを明示するマーカー。
+イベント引数に対して型制約を行う→(!TEventArgsはEventArgsを継承しなければならない!)
