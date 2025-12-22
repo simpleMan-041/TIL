@@ -1,0 +1,7 @@
+ここではSQL操作やそれに付随するクラスを紹介。
+クエリの実行まで複数のオブジェクトを経由するため、1つ1つの役割を抑えておこう。
+
+➀SqlConnectionオブジェクト
+➁ConfigurationManagerオブジェクト
+➂SqlDataAdapterオブジェクト
+➃DataTableオブジェクト
